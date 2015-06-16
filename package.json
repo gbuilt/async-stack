@@ -1,0 +1,29 @@
+{
+  "name": "async-stack",
+  "version": "1.0.0",
+  "description": "Async-to-sync queue stack process management - the simplest way possible.",
+  "main": "async-stack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbuilt/async-stack"
+  },
+  "keywords": [
+    "async",
+    "sync",
+    "stack",
+    "queue",
+    "management",
+    "control",
+    "order",
+    "nexttick"
+  ],
+  "author": "GBuilt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbuilt/async-stack/issues"
+  },
+  "homepage": "https://github.com/gbuilt/async-stack"
+}
