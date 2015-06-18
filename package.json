@@ -1,6 +1,6 @@
 {
   "name": "async-stack",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Async-to-sync queue stack process management - the simplest way possible.",
   "main": "async-stack.js",
   "scripts": {
@@ -15,9 +15,13 @@
     "sync",
     "stack",
     "queue",
+    "flow",
     "management",
     "control",
     "order",
+    "que",
+    "Q",
+    "bluebird",
     "nexttick"
   ],
   "author": "GBuilt",

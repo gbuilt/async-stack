@@ -1,19 +1,20 @@
 # async-stack
 Async-to-sync queue stack process management - the simplest way possible.
-Key Words: async sync stack queue management control order nexttick
 
 Install: npm install async-stack
 
 Usage:
+
 		// ADD THE MODULE
-		var Stack = require("async-stack"),
+		var asyncstack = require("async-stack"),  // A Class allowing multiple independent instances.
+			Stack = new asyncstack(), // this instance of 'asyncstack'.
 			self = this,
 			self.sql = {};
 
 		// BUILD THE STACK
 		Stack.push(
 			function(){
-				// On this one, don't call 'next()' until end of inside sql callback!
+				// On this one, don't call 'next()' until end of inside the mysql callback!
 				require("./path/somesql.js")(1, function(err, result, fields){
 					if (err) { throw err; return; }
 
@@ -26,12 +27,12 @@ Usage:
 					//		lastname: 'Smith',
 					// }
 
+					// NOTE: We passed 'false' 2nd param to Stack.push()
 					// Manually call next now that we are ready.
-					// We passed 'false' 2nd param to Stack.push()
-					// so we can call this here.
 					Stack.next();
 				});
-			}, false
+			}
+			,false  // Passing second param [false] prevents auto-call of .next(), now it must be called manually!
 		);
 		Stack.push(
 			function(){
@@ -66,7 +67,7 @@ Usage:
 				response.end()
 			}
 		);
-		Stack.pushFinish(
+		Stack.pushfinish(
 			function(){
 				response.end()
 			}
