@@ -11,7 +11,8 @@ module.exports = (function(){
 			finishqueue = [],
 			finishindex = 0,
 			finishauto = [],
-			bool = function(v){return (typeof(v)==="undefined"?true:!!v)};  // default to true
+			bool = function(v){return (typeof(v)==="undefined"?true:!!v)},  // default to true
+			self = this;
 
 		this.isstarted = function(){
 			return flagstarted;
@@ -68,7 +69,6 @@ module.exports = (function(){
 			return false;
 		};
 		this.next = function(){
-			var that = this;
 			if (mainindex<mainqueue.length) {
 				flagfinished = false;
 				setTimeout(
@@ -76,7 +76,7 @@ module.exports = (function(){
 						mainqueue[mainindex]();
 						mainindex++;
 						if (mainauto[mainindex-1]){
-							that.next();
+							self.next();
 						}
 					}
 					,1
@@ -89,7 +89,7 @@ module.exports = (function(){
 						finishqueue[finishindex]();
 						finishindex++;
 						if (finishauto[finishindex-1]){
-							that.next();
+							self.next();
 						}
 					}
 					,1
@@ -102,7 +102,7 @@ module.exports = (function(){
 		this.start = function(){
 			if (!flagstarted) {
 				flagstarted = true;
-				this.next();
+				self.next();
 				return true;
 			}
 			return false;
