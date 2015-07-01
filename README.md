@@ -15,7 +15,7 @@ Usage:
 		Stack.push(
 			function(){
 				// On this one, don't call 'next()' until end of inside the mysql callback!
-				require("./path/somesql.js")(1, function(err, result, fields){
+				mysql.query('select some_data from some_table', function(err, result, fields){
 					if (err) { throw err; return; }
 
 					// Make the result accessible to the rest of this page
@@ -64,14 +64,27 @@ Usage:
 				// ...
 
 				response.write(footer_html);
-				response.end()
 			}
 		);
 		Stack.pushfinish(
 			function(){
-				response.end()
+				response.end();
 			}
 		);
 
+
+		// NOTES:
+		// There are two additional features, following traditional array handling:
+		//  'unshift()' = pre-pend a function to the front/top of the main stack
+		//  'unshiftfinish()' = pre-pend a function to the front/top of the finish stack
+
+		// Read the asycn-stack.js code for a number of additional accessors to get the stask lengths,
+		//  the current index, isstarted, and isfinished flags of your stack.
+
+
+		// Make it all happen!
 		// Trigger the Stack calls
 		Stack.start();
+
+
+		// Now, go make it better.

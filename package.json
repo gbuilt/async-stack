@@ -1,6 +1,6 @@
 {
   "name": "async-stack",
-  "version": "1.5.1",
+  "version": "1.5.5",
   "description": "Async-to-sync queue stack process management - the simplest way possible.",
   "main": "async-stack.js",
   "scripts": {
