@@ -73,7 +73,9 @@ module.exports = (function(){
 				flagfinished = false;
 				setTimeout(
 					function () {
-						mainqueue[mainindex]();
+						if (typeof(mainqueue[mainindex])==="function") {
+							mainqueue[mainindex]();
+						}
 						mainindex++;
 						if (mainauto[mainindex-1]){
 							self.next();
